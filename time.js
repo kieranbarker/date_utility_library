@@ -97,14 +97,14 @@ const Time = (function() {
   /**
    * Add a number of days to a date.
    * @param {Date} date
-   * @param {number} days
+   * @param {number} numDays
    * @returns {Date}
    */
-  function addDays(date = new Date(), days = 0) {
+  function addDays(date = new Date(), numDays = 0) {
     const dateCopy = new Date(date);
 
     const currentDate = dateCopy.getDate();
-    dateCopy.setDate(currentDate + days);
+    dateCopy.setDate(currentDate + numDays);
 
     return dateCopy;
   }
@@ -112,14 +112,14 @@ const Time = (function() {
   /**
    * Add a number of months to a date.
    * @param {Date} date
-   * @param {number} months
+   * @param {number} numMonths
    * @returns {Date}
    */
-  function addMonths(date = new Date(), months = 0) {
+  function addMonths(date = new Date(), numMonths = 0) {
     const dateCopy = new Date(date);
 
     const currentMonth = dateCopy.getMonth();
-    dateCopy.setMonth(currentMonth + months);
+    dateCopy.setMonth(currentMonth + numMonths);
 
     return dateCopy;
   }
@@ -127,14 +127,14 @@ const Time = (function() {
   /**
    * Add a number of years to a date.
    * @param {Date} date
-   * @param {number} years
+   * @param {number} numYears
    * @returns {Date}
    */
-  function addYears(date = new Date(), years = 0) {
+  function addYears(date = new Date(), numYears = 0) {
     const dateCopy = new Date(date);
 
     const currentYear = dateCopy.getFullYear();
-    dateCopy.setFullYear(currentYear + years);
+    dateCopy.setFullYear(currentYear + numYears);
 
     return dateCopy;
   }
