@@ -1,5 +1,3 @@
-// @ts-check
-
 const Time = (function() {
 
   'use strict';
