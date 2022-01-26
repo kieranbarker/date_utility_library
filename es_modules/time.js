@@ -50,12 +50,9 @@ function getMonth(date = new Date()) {
  * @returns {Date}
  */
 function addSeconds(date = new Date(), numSeconds = 0) {
-  const dateCopy = new Date(date);
-
-  const seconds = dateCopy.getSeconds();
-  dateCopy.setSeconds(seconds + numSeconds);
-
-  return dateCopy;
+  const seconds = date.getSeconds();
+  date.setSeconds(seconds + numSeconds);
+  return date;
 }
 
 /**
@@ -65,12 +62,9 @@ function addSeconds(date = new Date(), numSeconds = 0) {
  * @returns {Date}
  */
 function addMinutes(date = new Date(), numMinutes = 0) {
-  const dateCopy = new Date(date);
-
-  const minutes = dateCopy.getMinutes();
-  dateCopy.setMinutes(minutes + numMinutes);
-
-  return dateCopy;
+  const minutes = date.getMinutes();
+  date.setMinutes(minutes + numMinutes);
+  return date;
 }
 
 /**
@@ -80,12 +74,9 @@ function addMinutes(date = new Date(), numMinutes = 0) {
  * @returns {Date}
  */
 function addHours(date = new Date(), numHours = 0) {
-  const dateCopy = new Date(date);
-
-  const hours = dateCopy.getHours();
-  dateCopy.setHours(hours + numHours);
-
-  return dateCopy;
+  const hours = date.getHours();
+  date.setHours(hours + numHours);
+  return date;
 }
 
 /**
@@ -95,12 +86,9 @@ function addHours(date = new Date(), numHours = 0) {
  * @returns {Date}
  */
 function addDays(date = new Date(), numDays = 0) {
-  const dateCopy = new Date(date);
-
-  const currentDate = dateCopy.getDate();
-  dateCopy.setDate(currentDate + numDays);
-
-  return dateCopy;
+  const currentDate = date.getDate();
+  date.setDate(currentDate + numDays);
+  return date;
 }
 
 /**
@@ -110,12 +98,9 @@ function addDays(date = new Date(), numDays = 0) {
  * @returns {Date}
  */
 function addMonths(date = new Date(), numMonths = 0) {
-  const dateCopy = new Date(date);
-
-  const currentMonth = dateCopy.getMonth();
-  dateCopy.setMonth(currentMonth + numMonths);
-
-  return dateCopy;
+  const currentMonth = date.getMonth();
+  date.setMonth(currentMonth + numMonths);
+  return date;
 }
 
 /**
@@ -125,12 +110,9 @@ function addMonths(date = new Date(), numMonths = 0) {
  * @returns {Date}
  */
 function addYears(date = new Date(), numYears = 0) {
-  const dateCopy = new Date(date);
-
-  const currentYear = dateCopy.getFullYear();
-  dateCopy.setFullYear(currentYear + numYears);
-
-  return dateCopy;
+  const currentYear = date.getFullYear();
+  date.setFullYear(currentYear + numYears);
+  return date;
 }
 
 export {
