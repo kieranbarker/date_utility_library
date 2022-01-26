@@ -23,54 +23,54 @@ const months = [
   'December'
 ];
 
-class Time extends Date {
+class Time {
   constructor(...args) {
-    super(...args);
+    this.date = new Date(...args);
   }
 
-  getDayName() {
-    const index = this.getDay();
+  getDay() {
+    const index = this.date.getDay();
     return days[index];
   }
 
-  getMonthName() {
-    const index = this.getMonth();
+  getMonth() {
+    const index = this.date.getMonth();
     return months[index];
   }
 
   addSeconds(numSeconds = 0) {
-    const seconds = this.getSeconds();
-    this.setSeconds(seconds + numSeconds);
+    const seconds = this.date.getSeconds();
+    this.date.setSeconds(seconds + numSeconds);
     return this;
   }
 
   addMinutes(numMinutes = 0) {
-    const minutes = this.getMinutes();
-    this.setMinutes(minutes + numMinutes);
+    const minutes = this.date.getMinutes();
+    this.date.setMinutes(minutes + numMinutes);
     return this;
   }
 
   addHours(numHours = 0) {
-    const hours = this.getHours();
-    this.setHours(hours + numHours);
+    const hours = this.date.getHours();
+    this.date.setHours(hours + numHours);
     return this;
   }
 
   addDays(numDays = 0) {
-    const currentDate = this.getDate();
-    this.setDate(currentDate + numDays);
+    const currentDate = this.date.getDate();
+    this.date.setDate(currentDate + numDays);
     return this;
   }
 
   addMonths(numMonths = 0) {
-    const currentMonth = this.getMonth();
-    this.setMonth(currentMonth + numMonths);
+    const currentMonth = this.date.getMonth();
+    this.date.setMonth(currentMonth + numMonths);
     return this;
   }
 
   addYears(numYears = 0) {
-    const currentYear = this.getFullYear();
-    this.setFullYear(currentYear + numYears);
+    const currentYear = this.date.getFullYear();
+    this.date.setFullYear(currentYear + numYears);
     return this;
   }
 }
