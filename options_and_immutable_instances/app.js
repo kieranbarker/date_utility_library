@@ -28,6 +28,12 @@ const now = new Time({
   ]
 });
 
+try {
+  now.date = 'Broke your library!';
+} catch {
+  console.log('Nice try!', now);
+}
+
 const currentTime = document.querySelector('#current-time');
 currentTime.textContent = now.date.toLocaleString(locale);
 
