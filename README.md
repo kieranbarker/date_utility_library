@@ -5,3 +5,4 @@ This is the second project from the [Advanced JavaScript: Structure &amp; Scale]
 1. [Revealing module pattern](https://kieranbarker.github.io/date_utility_library/revealing_module_pattern)
 2. [ES modules](https://kieranbarker.github.io/date_utility_library/es_modules)
 3. [Class](https://kieranbarker.github.io/date_utility_library/class/)
+4. [Options and immutable instances](https://kieranbarker.github.io/date_utility_library/options_and_immutable_instances/)
