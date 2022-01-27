@@ -23,6 +23,8 @@ const months = [
   'December'
 ];
 
+const privateData = new WeakMap();
+
 class Time {
   constructor(options = {}, ...args) {
     const settings = { days, months, ...options };
@@ -35,22 +37,28 @@ class Time {
       throw new RangeError('Expected 12 months.');
     }
 
-    this.settings = settings;
-    this.date = new Date(...args);
+    privateData.set(this, { settings, date: new Date(...args) });
+  }
+
+  get date() {
+    return privateData.get(this).date;
   }
 
   getDay() {
-    const index = this.date.getDay();
-    return this.settings.days[index];
+    const { settings, date } = privateData.get(this);
+    const index = date.getDay();
+    return settings.days[index];
   }
 
   getMonth() {
-    const index = this.date.getMonth();
-    return this.settings.months[index];
+    const { settings, date } = privateData.get(this);
+    const index = date.getMonth();
+    return settings.months[index];
   }
 
   addSeconds(numSeconds = 0) {
-    const copy = new Time(this.settings, this.date);
+    const { settings, date } = privateData.get(this);
+    const copy = new Time(settings, date);
 
     const seconds = copy.date.getSeconds();
     copy.date.setSeconds(seconds + numSeconds);
@@ -59,7 +67,8 @@ class Time {
   }
 
   addMinutes(numMinutes = 0) {
-    const copy = new Time(this.settings, this.date);
+    const { settings, date } = privateData.get(this);
+    const copy = new Time(settings, date);
 
     const minutes = copy.date.getMinutes();
     copy.date.setMinutes(minutes + numMinutes);
@@ -68,7 +77,8 @@ class Time {
   }
 
   addHours(numHours = 0) {
-    const copy = new Time(this.settings, this.date);
+    const { settings, date } = privateData.get(this);
+    const copy = new Time(settings, date);
 
     const hours = copy.date.getHours();
     copy.date.setHours(hours + numHours);
@@ -77,7 +87,8 @@ class Time {
   }
 
   addDays(numDays = 0) {
-    const copy = new Time(this.settings, this.date);
+    const { settings, date } = privateData.get(this);
+    const copy = new Time(settings, date);
 
     const currentDate = copy.date.getDate();
     copy.date.setDate(currentDate + numDays);
@@ -86,7 +97,8 @@ class Time {
   }
 
   addMonths(numMonths = 0) {
-    const copy = new Time(this.settings, this.date);
+    const { settings, date } = privateData.get(this);
+    const copy = new Time(settings, date);
 
     const currentMonth = copy.date.getMonth();
     copy.date.setMonth(currentMonth + numMonths);
@@ -95,7 +107,8 @@ class Time {
   }
 
   addYears(numYears = 0) {
-    const copy = new Time(this.settings, this.date);
+    const { settings, date } = privateData.get(this);
+    const copy = new Time(settings, date);
 
     const currentYear = copy.date.getFullYear();
     copy.date.setFullYear(currentYear + numYears);
