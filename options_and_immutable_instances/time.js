@@ -1,3 +1,5 @@
+const privateData = new WeakMap();
+
 const days = [
   'Sunday',
   'Monday',
@@ -22,8 +24,6 @@ const months = [
   'November',
   'December'
 ];
-
-const privateData = new WeakMap();
 
 class Time {
   constructor(options = {}, ...args) {
