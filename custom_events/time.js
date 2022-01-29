@@ -1,7 +1,14 @@
 import { emitEvent } from './helpers.js';
 
-const eventName = 'time:update';
 const privateData = new WeakMap();
+
+const eventPrefix = 'time:';
+const eventTarget = document;
+
+const events = {
+  ready: eventPrefix + 'ready',
+  update: eventPrefix + 'update'
+};
 
 const days = [
   'Sunday',
@@ -41,6 +48,7 @@ class Time {
     }
 
     privateData.set(this, { settings, date: new Date(...args) });
+    emitEvent(events.ready, { time: this }, eventTarget);
   }
 
   get date() {
@@ -66,8 +74,13 @@ class Time {
     const seconds = copy.date.getSeconds();
     copy.date.setSeconds(seconds + numSeconds);
 
-    const shouldUpdateTime = emitEvent(eventName, { time: copy }, document);
-    return shouldUpdateTime ? copy : this;
+    const shouldUpdate = emitEvent(events.update, {
+      time: copy,
+      type: 'seconds',
+      number: numSeconds
+    }, eventTarget);
+
+    return shouldUpdate ? copy : this;
   }
 
   addMinutes(numMinutes = 0) {
@@ -77,8 +90,13 @@ class Time {
     const minutes = copy.date.getMinutes();
     copy.date.setMinutes(minutes + numMinutes);
 
-    const shouldUpdateTime = emitEvent(eventName, { time: copy }, document);
-    return shouldUpdateTime ? copy : this;
+    const shouldUpdate = emitEvent(events.update, {
+      time: copy,
+      type: 'minutes',
+      number: numMinutes
+    }, eventTarget);
+
+    return shouldUpdate ? copy : this;
   }
 
   addHours(numHours = 0) {
@@ -88,8 +106,13 @@ class Time {
     const hours = copy.date.getHours();
     copy.date.setHours(hours + numHours);
 
-    const shouldUpdateTime = emitEvent(eventName, { time: copy }, document);
-    return shouldUpdateTime ? copy : this;
+    const shouldUpdate = emitEvent(events.update, {
+      time: copy,
+      type: 'hours',
+      number: numHours
+    }, eventTarget);
+
+    return shouldUpdate ? copy : this;
   }
 
   addDays(numDays = 0) {
@@ -99,8 +122,13 @@ class Time {
     const currentDate = copy.date.getDate();
     copy.date.setDate(currentDate + numDays);
 
-    const shouldUpdateTime = emitEvent(eventName, { time: copy }, document);
-    return shouldUpdateTime ? copy : this;
+    const shouldUpdate = emitEvent(events.update, {
+      time: copy,
+      type: 'days',
+      number: numDays
+    }, eventTarget);
+
+    return shouldUpdate ? copy : this;
   }
 
   addMonths(numMonths = 0) {
@@ -110,8 +138,13 @@ class Time {
     const currentMonth = copy.date.getMonth();
     copy.date.setMonth(currentMonth + numMonths);
 
-    const shouldUpdateTime = emitEvent(eventName, { time: copy }, document);
-    return shouldUpdateTime ? copy : this;
+    const shouldUpdate = emitEvent(events.update, {
+      time: copy,
+      type: 'months',
+      number: numMonths
+    }, eventTarget);
+
+    return shouldUpdate ? copy : this;
   }
 
   addYears(numYears = 0) {
@@ -121,8 +154,13 @@ class Time {
     const currentYear = copy.date.getFullYear();
     copy.date.setFullYear(currentYear + numYears);
 
-    const shouldUpdateTime = emitEvent(eventName, { time: copy }, document);
-    return shouldUpdateTime ? copy : this;
+    const shouldUpdate = emitEvent(events.update, {
+      time: copy,
+      type: 'years',
+      number: numYears
+    }, eventTarget);
+
+    return shouldUpdate ? copy : this;
   }
 }
 
