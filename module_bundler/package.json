@@ -1,0 +1,16 @@
+{
+  "name": "time",
+  "private": "true",
+  "version": "1.0.0",
+  "description": "",
+  "main": "time.js",
+  "scripts": {
+    "build": "npx rollup --config",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kieran Barker <kieran@barker.codes> (https://barker.codes/)",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^2.66.1"
+  }
+}
