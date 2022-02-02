@@ -1,3 +1,4 @@
+/*! time 1.0.0 | A simple date utility library | Copyright 2022 | MIT license */
 const Time = (function () {
   'use strict';
 

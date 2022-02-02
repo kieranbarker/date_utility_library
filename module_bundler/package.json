@@ -2,7 +2,7 @@
   "name": "time",
   "private": "true",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple date utility library",
   "main": "time.js",
   "scripts": {
     "build": "npx rollup --config",
