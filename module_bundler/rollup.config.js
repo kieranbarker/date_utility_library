@@ -1,16 +1,20 @@
+import { titleCase } from './helpers.js';
 import { name, version, description, license } from './package.json';
 
+const formats = [ 'iife', 'es', 'cjs' ];
+
 const banner =
-  `/*! ${name} ${version} | ${description} | ` +
+  `/*! ${titleCase(name)} ${version} | ${description} | ` +
   `Copyright ${new Date().getFullYear()} | ${license} license */`;
 
-export default {
+export default formats.map(format => ({
   input: 'index.js',
   output: {
     banner,
-    file: 'time.js',
-    format: 'iife',
-    name: 'Time',
-    preferConst: true
+    format,
+    preferConst: true,
+    exports: 'default',
+    name: titleCase(name),
+    file: name + (format === 'iife' ? '' : `.${format}`) + '.js'
   }
-};
+}));
